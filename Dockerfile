@@ -27,7 +27,7 @@ FROM dependencies AS test
 COPY . .
 
 # yarn run test -o --watch
-RUN yarn run format && yarn run lint && yarn run test
+#RUN yarn run test
 
 
 # ---- Release ----
@@ -40,6 +40,6 @@ COPY --from=dependencies /usr/src/app/prod_node_modules ./node_modules
 COPY . .
 
 # expose port and define CMD
-EXPOSE 8080
+EXPOSE 3000
 
 CMD yarn run api

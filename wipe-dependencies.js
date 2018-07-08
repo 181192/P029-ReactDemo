@@ -1,21 +1,25 @@
-const fs = require('fs')
+const fs = require('fs');
+
 const wipeDependencies = () => {
+
   const file  = fs.readFileSync('package.json')
   const content = JSON.parse(file)
-  for (var devDep in content.devDependencies) {
-    if (!content.devDependencies[devDep].includes("git")) {
-      content.devDependencies[devDep] = '*'
-    }
-  }
-  for (var dep in content.dependencies) {
-    if (!content.dependencies[dep].includes("git")) {
-      content.dependencies[dep] = '*'
-    }
-  }
+
+  const [ devDependencies ] = content.devDependencies;
+  const [ dependencies ] = content.dependencies;
+
+  Object.keys(devDependencies).forEach( (devDep) => {
+    if (!devDependencies[devDep].includes("git"))
+      devDependencies[devDep] = '*'
+  })
+
+  Object.keys(dependencies).forEach( (dep) => {
+    if (!dependencies[dep].includes("git"))
+      dependencies[dep] = '*'
+  })
+
   fs.writeFileSync('package.json', JSON.stringify(content))
 }
-if (require.main === module) {
-  wipeDependencies()
-} else {
-  module.exports = wipeDependencies
-}
+
+if (require.main === module) wipeDependencies()
+else module.exports = wipeDependencies

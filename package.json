@@ -1,11 +1,11 @@
 {
   "scripts": {
     "api": "node ratingsAPI.js",
-    "format": "prettier --list-different --single-quote --print-width=120 webpack.config.js \"js/**/*.{js,jsx}\"",
-    "lint": "eslint **/*.{js,jsx} --quiet",
-    "watch": "webpack --watch",
-    "build": "webpack -p",
-    "build:dev": "webpack -d",
+    "format": "./node_modules/.bin/prettier --list-different --single-quote --print-width=120 webpack.config.js \"js/**/*.{js,jsx}\"",
+    "lint": "./node_modules/.bin/eslint **/*.{js,jsx} --quiet",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "build": "./node_modules/.bin/webpack -p",
+    "build:dev": "./node_modules/.bin/webpack -d",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=server node server.js",
     "test": "NODE_ENV=test jest",
@@ -42,6 +42,7 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "devDependencies": {
+    "@webpack-cli/init": "^0.0.8",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
     "babel-loader": "^7.1.5",
@@ -73,9 +74,10 @@
     "prettier": "^1.13.7",
     "react-hot-loader": "^4.3.3",
     "react-test-renderer": "^16.4.1",
+    "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
   },
-  "name": "ReactDemo",
+  "name": "p029-reactdemo",
   "version": "0.0.1",
   "description": "A small react app",
   "main": "server.js",

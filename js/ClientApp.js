@@ -1,24 +1,20 @@
-/* global React ReactDOM */
+import React from 'react';
+import { render } from 'react-dom';
+import MyTitle from './MyTitle';
 
-var MyTitle = function () {
+const ce = React.createElement;
+
+const MyFirstComponent = function () {
   return (
-    React.createElement('div', null,
-      React.createElement('h1', null, 'Check out this component!')
+    ce('div', null,
+      ce(MyTitle, {color: 'rebeccapurple', title: 'House of Cards'}),
+      ce(MyTitle, {color: 'peru', title: 'Orange is the New Black'}),
+      ce(MyTitle, {color: 'burlywood', title: 'Stranger Things'})
     )
   );
 };
 
-var MyFirstComponent = function () {
-  return (
-    React.createElement('div', null,
-      React.createElement(MyTitle, null),
-      React.createElement(MyTitle, null),
-      React.createElement(MyTitle, null)
-    )
-  );
-};
-
-ReactDOM.render(
+render(
   React.createElement(MyFirstComponent),
-  document.getElementById("app")
+  document.getElementById('app')
 );
